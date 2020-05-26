@@ -1,0 +1,21 @@
+﻿<tr>
+    <td><button @onclick="CollapseWeekday">@(this.Collapsed? "+": "-")</button></td>
+    <td>@forecast.ID</td>
+    <td>@forecast.Date.ToShortDateString()</td>
+    <td>@forecast.TemperatureC</td>
+    <td>@forecast.TemperatureF</td>
+    <td>@forecast.Summary</td>
+</tr>
+<BlazorTableCollapse.Components.FetchDataWeekdayForecast Forecast="forecast" Collapsed="Collapsed" />
+
+@code {
+    [Parameter]
+    public BlazorTableCollapse.Data.WeatherForecast forecast { get; set; }
+
+    private bool Collapsed = true;
+
+    private async Task CollapseWeekday(MouseEventArgs e)
+    {
+        this.Collapsed = !this.Collapsed;
+    }
+}

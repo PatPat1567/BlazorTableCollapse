@@ -1,0 +1,19 @@
+﻿
+<tr class="@(Collapsed ? "collapse": "")">
+    <td colspan="6">
+        @foreach (var weekday in Forecast.WeeklyForecast)
+        {
+            <ul>@weekday.Day - @weekday.High - @weekday.Low </ul>
+        }
+    </td>
+</tr>
+
+@code {
+
+    [Parameter]
+    public bool Collapsed { get; set; }
+
+    [Parameter]
+    public BlazorTableCollapse.Data.WeatherForecast Forecast { get; set; }
+
+}
